@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily TODO List</title>
+    <title>Päivän tehtävälista</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Daily TODO List</h1>
+            <h1>Päivän tehtävälista</h1>
             <p class="date" id="currentDate"></p>
         </header>
 
@@ -17,22 +17,22 @@
             <input
                 type="text"
                 id="taskInput"
-                placeholder="Enter a new task..."
+                placeholder="Kirjoita uusi tehtävä..."
                 autocomplete="off"
             >
-            <button id="addButton">Add Task</button>
+            <button id="addButton">Lisää tehtävä</button>
         </div>
 
         <div class="stats">
-            <span id="totalTasks">Total: 0</span>
-            <span id="completedTasks">Completed: 0</span>
-            <span id="pendingTasks">Pending: 0</span>
+            <span id="totalTasks">Yhteensä: 0</span>
+            <span id="completedTasks">Valmiit: 0</span>
+            <span id="pendingTasks">Kesken: 0</span>
         </div>
 
         <ul id="taskList" class="task-list"></ul>
 
         <div class="empty-state" id="emptyState">
-            <p>No tasks yet. Add one to get started!</p>
+            <p>Ei vielä tehtäviä. Lisää ensimmäinen tehtävä!</p>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
         const API_URL = 'http://localhost:3000';
 
         // Display current date
-        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('fi-FI', {
             weekday: 'long',
             year: 'numeric',
             month: 'long',
@@ -134,7 +134,7 @@
                         >
                         <span class="task-text">${escapeHtml(task.text)}</span>
                     </div>
-                    <button class="delete-btn" onclick="deleteTask(${task.id})">Delete</button>
+                    <button class="delete-btn" onclick="deleteTask(${task.id})">Poista</button>
                 </li>
             `).join('');
 
@@ -143,9 +143,9 @@
         }
 
         function updateStats(total, completed, pending) {
-            document.getElementById('totalTasks').textContent = `Total: ${total}`;
-            document.getElementById('completedTasks').textContent = `Completed: ${completed}`;
-            document.getElementById('pendingTasks').textContent = `Pending: ${pending}`;
+            document.getElementById('totalTasks').textContent = `Yhteensä: ${total}`;
+            document.getElementById('completedTasks').textContent = `Valmiit: ${completed}`;
+            document.getElementById('pendingTasks').textContent = `Kesken: ${pending}`;
         }
 
         function escapeHtml(text) {
