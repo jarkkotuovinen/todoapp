@@ -120,6 +120,11 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (method === "GET" && url === "/app.js") {
+    serveStaticFile(res, path.join(__dirname, "app.js"));
+    return;
+  }
+
   // API Routes
   try {
     // GET /tasks - Get all tasks
